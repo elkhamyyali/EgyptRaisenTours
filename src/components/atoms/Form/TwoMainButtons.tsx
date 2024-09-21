@@ -36,11 +36,11 @@ const HeroOverlay: React.FC<Props> = () => {
     <div>
       <div className="absolute inset-0 flex flex-col justify-center items-center mt-20  p-4">
         <h1 className="text-4xl sm:text-5xl capitalize text-white font-bold lg:text-6xl font-segoe text-center mb-4 lg:mb-6">
-          Sarayelnile Tours With The Best Locals Ever!
+          Egypt Raisen Tours With The Best Locals Ever!
         </h1>
         <p className="text-lg sm:text-xl capitalize text-white font-bold font-segoe lg:text-2xl text-center mb-8 lg:mb-10">
-          Confused? Want to sarayelnile your dream package? Enquire here in 1
-          min.
+          Confused? Want to Egypt Raisen your dream package? Enquire here in 1
+          min
         </p>
         <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0">
           <Link href="/inquire" passHref>
@@ -48,7 +48,9 @@ const HeroOverlay: React.FC<Props> = () => {
               Inquire Now
             </button>
           </Link>
-          <span className="text-lg font-semibold mb-4 sm:mb-0 sm:mr-4">Or</span>
+          <span className="text-lg font-semibold mb-4 sm:mb-0 sm:mr-4 text-white">
+            Or
+          </span>
           <Link href="/top-packages" passHref>
             <button className="bg-yellow-600 capitalize font-segoe text-white font-semibold py-3 px-8 lg:py-4 lg:px-10 rounded-md shadow-lg transition-all duration-300 ease-in-out  hover:bg-transparent hover:border-yellow-300 hover:text-yellow-400 hover:shadow-xl transform hover:scale-105">
               Discover Travel Packages

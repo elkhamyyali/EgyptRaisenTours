@@ -9,38 +9,63 @@ import {
   ToursSection,
   WhyUsSection,
 } from "@/components/organisms";
+import BlogSection from "@/components/organisms/BlogSection";
+import CallToActionSection from "@/components/organisms/CTAsection";
 import fetchData from "@/helper/FetchData";
-import { ToursData } from "@/types/tour";
+import { TourPackage, ToursData } from "@/types/tour";
+
+type Blog = {
+  id: number;
+  title: string;
+  content: string;
+  created_at: string;
+  image: string;
+};
 
 interface HomeProps {
-  toursData: ToursData;
+  toursData: ToursData; // Tours data for general tours
+  excursionData: TourPackage[]; // Rename for excursion tours data
+  blogData: Blog[];
 }
 
-export default function Home({ toursData }: HomeProps) {
+export default function Home({
+  toursData,
+  excursionData,
+  blogData,
+}: HomeProps) {
   console.log("🚀 ~ Home ~ toursData:", toursData);
+  console.log("🚀 ~ Home ~ excursionData:", excursionData);
+  console.log("🚀 ~ Home ~ blogData:", blogData);
 
   return (
     <>
       <HeroSection />
-      <OffersSection />
+      {/* <OffersSection /> */}
       <WhyUsSection />
       <ToursSection toursData={toursData} />
-      {/* Uncomment and include additional sections as needed */}
+      <ExcursionsSection toursData={excursionData} /> {/* Use excursionData */}
       {/* <DestinationSection /> */}
-      {/* <AttractionsSection /> */}
-      {/* <ExcursionsSection /> */}
-      {/* <AdventuresSection /> */}
+      <AttractionsSection />
+      <AdventuresSection />
+      <CallToActionSection />
       <PeaopleSaySection />
+      {/* Add Blog Section */}
+      <BlogSection blogData={blogData} />
     </>
   );
 }
 
 export async function getServerSideProps() {
-  const data: ToursData = await fetchData("tours");
+  const toursData: ToursData = await fetchData("tours");
+  const excursionData = await fetchData("tours?type=excursion"); // Rename this variable
+
+  const blogData = await fetchData("blogs");
 
   return {
     props: {
-      toursData: data,
+      toursData: toursData,
+      excursionData: excursionData.data as TourPackage[], // Pass the renamed variable
+      blogData: blogData.data,
     },
   };
 }

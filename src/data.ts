@@ -70,6 +70,36 @@ export const cardData = [
     title: "Explore",
     hoverText: "Uncover Secrets",
   },
+  {
+    id: 1,
+    image: First,
+    title: "Solo",
+    hoverText: "Discover Solitude",
+  },
+  {
+    id: 2,
+    image: Second,
+    title: "Adventure",
+    hoverText: "Seek Thrills",
+  },
+  {
+    id: 3,
+    image: Third,
+    title: "Explore",
+    hoverText: "Uncover Secrets",
+  },
+  {
+    id: 4,
+    image: Third,
+    title: "Explore",
+    hoverText: "Uncover Secrets",
+  },
+  {
+    id: 5,
+    image: Third,
+    title: "Explore",
+    hoverText: "Uncover Secrets",
+  },
   // Add more cards as needed
 ];
 

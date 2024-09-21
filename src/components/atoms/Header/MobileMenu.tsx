@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { CiGlobe } from "react-icons/ci";
+import { AiOutlineLogin, AiOutlineSearch } from "react-icons/ai"; // Import icons
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -19,7 +20,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
 
   return (
     <div
-      className={`fixed inset-y-0 right-0 z-50 bg-white p-6 w-[100%] max-w-sm mx-auto rounded-lg shadow-lg transform transition-transform duration-300 ease-in-out ${
+      className={`fixed inset-y-0 right-0 z-50 bg-white p-6 w-[100%] max-w-full mx-auto rounded-lg shadow-lg transform transition-transform duration-300 ease-in-out ${
         isOpen ? "translate-x-0" : "translate-x-full"
       }`}
     >
@@ -69,7 +70,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           </li>
         ))}
       </ul>
-
+      <Link href="/login" className="flex items-center justify-center mt-4">
+        <AiOutlineLogin size={30} className="text-[#945E13]" />
+        <span className="ml-2">Login</span>
+      </Link>
       <div className="flex items-center justify-center mt-8">
         <button
           className="text-black focus:outline-none"
@@ -79,6 +83,13 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           <CiGlobe size={30} />
         </button>
       </div>
+
+      {/* Login Button */}
+
+      {/* Search Button */}
+      {/* <button className="flex items-center justify-center mt-4" title="Search">
+        <AiOutlineSearch size={30} className="text-[#945E13]" />
+      </button> */}
     </div>
   );
 };

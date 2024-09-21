@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import LocationDropdown from "./LocationDropdown";
 import dayjs from "dayjs";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 type DateRange = [Date | null, Date | null];
 
@@ -28,6 +29,9 @@ const SearchModal: React.FC<SearchModalProps> = ({
   setDateRange,
   setOpenDatePickerModal,
 }) => {
+  const [option, setOption] = useState<string>("");
+  const options: string[] = ["Packages", "Nile Cruise", "Excursions"];
+
   const formatDateRange = () => {
     const [start, end] = dateRange;
     if (start && end) {
@@ -67,6 +71,24 @@ const SearchModal: React.FC<SearchModalProps> = ({
             onClick={() => setOpenDatePickerModal(true)} // Open DatePickerModal
             className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-[200px] cursor-pointer"
           />
+
+          {/* Options Dropdown */}
+          <FormControl size="small" className="flex-1 mb-4">
+            <InputLabel id="option-label">Options</InputLabel>
+            <Select
+              labelId="option-label"
+              value={option}
+              onChange={(e) => setOption(e.target.value)}
+              label="Options"
+            >
+              {options.map((opt) => (
+                <MenuItem key={opt} value={opt}>
+                  {opt}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
           <Button
             onClick={() => setOpenModal(false)}
             variant="contained"

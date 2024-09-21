@@ -5,11 +5,55 @@ import { BsHeart, BsMap, BsClock, BsFillCircleFill } from "react-icons/bs";
 import { Button } from "@mui/material";
 import Link from "next/link";
 import { TourPackage } from "@/types/tour";
-import Loader from "../Loader"; // Import your Loader component
+import defaultImage from "../../../../public/assets/camels.jpeg";
 
 interface ExcursionsProps {
-  toursData: TourPackage[] | null;
+  toursData: TourPackage[];
 }
+
+const sampleToursData: TourPackage[] = [
+  {
+    id: 1,
+    name: "Giza Pyramids Tour", // Added name
+    main_image: defaultImage,
+    title: "Giza Pyramids Tour",
+    destination: "Giza",
+    duration: "1",
+    starRating: 5,
+    min_price: 50,
+    price: 40, // Added price
+    amenities: ["Guide", "Transport"], // Added amenities
+    accommodationType: "Hotel", // Added accommodation type
+    tour_prices: [{ prices: [{ price: 40 }] }],
+    description: "Explore the majestic Giza Pyramids with a guided tour.", // Optional description
+    age_range: "All Ages", // Added age range
+    language: "English", // Added language
+    location: "Giza, Egypt", // Optional location
+    rating: 4.8, // Optional rating
+    is_best_deal: 1, // Optional best deal flag
+  },
+  {
+    id: 2,
+    name: "Nile Cruise", // Added name
+    main_image: defaultImage,
+    title: "Nile Cruise Adventure",
+    destination: "Cairo",
+    duration: "3",
+    starRating: 4,
+    min_price: 150,
+    price: 120, // Added price
+    amenities: ["Meals", "Entertainment"], // Added amenities
+    accommodationType: "Cruise Ship", // Added accommodation type
+    tour_prices: [{ prices: [{ price: 120 }] }],
+    description: "Enjoy a relaxing cruise on the Nile River.", // Optional description
+    age_range: "12 and up", // Added age range
+    language: "Arabic", // Added language
+    location: "Cairo, Egypt", // Optional location
+    rating: 4.5, // Optional rating
+    is_best_deal: 0, // Optional best deal flag
+  },
+  // Add more sample tours here as needed
+];
 
 export default function Excursions({ toursData }: ExcursionsProps) {
   const sliderRef = React.useRef<Slider>(null);
@@ -39,27 +83,14 @@ export default function Excursions({ toursData }: ExcursionsProps) {
     ],
   };
 
-  if (toursData === null) {
-    return (
-      <div className="flex items-center justify-center h-[500px]">
-        <p className="text-gray-600 text-lg">
-          No tours available at the moment.
-        </p>
-      </div>
-    );
-  }
-
-  if (toursData.length === 0) {
-    return <Loader />;
-  }
+  // Use sample data if toursData is null or an empty array
+  const dataToDisplay =
+    toursData === null || toursData.length === 0 ? sampleToursData : toursData;
 
   return (
     <div className="relative">
-      <h2 className="md:text-3xl text-xl font-segoe ml-5 mb-6 text-start">
-        Tours and Tickets to Experience Giza Pyramids
-      </h2>
       <Slider {...settings} ref={sliderRef}>
-        {toursData.map((excursion: TourPackage) => (
+        {dataToDisplay.map((excursion: TourPackage) => (
           <div key={excursion.id} className="px-[5px] md:px-[9px] mb-3">
             <Link href="/top-excursions">
               <div className="px-[4px] mb-3">
@@ -96,7 +127,7 @@ export default function Excursions({ toursData }: ExcursionsProps) {
                     <div className="flex items-center mb-4">
                       <div className="flex-1">
                         <div className="flex items-center">
-                          {[1, 2, 3, 4].map((_, index) => (
+                          {[...Array(excursion.starRating)].map((_, index) => (
                             <BsFillCircleFill
                               key={index}
                               className="text-green-500 w-4 h-4 ml-1"
@@ -110,15 +141,13 @@ export default function Excursions({ toursData }: ExcursionsProps) {
                     </div>
                     <div className="text-sm">
                       <span className="line-through text-gray-500">
-                        From ${excursion.min_price}{" "}
-                        {/* Display minimum price */}
+                        From ${excursion.min_price}
                       </span>
                     </div>
                     <div className="mt-1">
                       <span className="font-segoe text-xl text-yellow-700">
                         From $
                         {excursion.tour_prices[0]?.prices[0]?.price || "N/A"}
-                        {/* Display actual price */}
                       </span>
                       <span className="text-gray-600 text-sm"> / Person</span>
                     </div>

@@ -1,5 +1,7 @@
 // types/tour.ts
 
+import { StaticImageData } from "next/image";
+
 export interface TourPackage {
   id: number;
   name: string;
@@ -8,10 +10,11 @@ export interface TourPackage {
   price: number;
   starRating: number;
   amenities: string[];
+  main_image: StaticImageData;
   accommodationType: string;
-  main_image: string;
+  tour_prices: any;
   description?: string;
-  duration: number;
+  duration: string;
   age_range: string;
   language: string;
   min_price: number;

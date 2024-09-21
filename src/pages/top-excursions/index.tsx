@@ -23,6 +23,9 @@ const Home: React.FC<HomeProps> = ({ toursData }) => {
         <Drops />
       </div>
       <div>
+        <h2 className="md:text-3xl text-xl font-segoe ml-5 mb-6 text-start">
+          Tours and Tickets to Experience Giza Pyramids
+        </h2>
         <Excursions toursData={toursData} />
       </div>
     </div>

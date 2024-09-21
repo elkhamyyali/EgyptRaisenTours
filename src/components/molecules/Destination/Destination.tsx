@@ -5,6 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Loader from "../Loader";
 
+// Import a default image
+import defaultImage from "../../../../public/assets/Secondimage.jpeg"; // Update the path accordingly
+
 // Define the type for the DestinationCard props
 interface DestinationCardProps {
   name: string;
@@ -18,7 +21,7 @@ const DestinationCard: React.FC<DestinationCardProps> = ({
 }) => (
   <div className="relative rounded-lg overflow-hidden group md:w-[310px] w-[320px] h-60 ml-12 md:mx-2 my-2">
     <Image
-      src={imageUrl}
+      src={imageUrl || defaultImage} // Use default image if imageUrl is empty
       alt={name}
       width={256}
       height={160}

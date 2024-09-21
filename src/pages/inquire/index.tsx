@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import Image from "next/image";
 import React, { useState } from "react";
-
+import InquireImage from "../../../public/assets/firstImage.jpeg";
 type Props = {};
 
 const Inquire = (props: Props) => {
@@ -15,8 +15,8 @@ const Inquire = (props: Props) => {
         {/* Left Section: Image */}
         <div className="flex items-center justify-center">
           <Image
-            src="https://readymadeui.com/signin-image.webp"
-            className="w-full h-auto max-w-xs md:max-w-md object-cover"
+            src={InquireImage}
+            className="w-full h-full max-w-xs md:max-w-3xl object-cover"
             alt="Contact Us"
             width={400} // Set suitable width
             height={400}

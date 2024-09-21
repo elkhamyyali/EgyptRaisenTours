@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
-import { Modal, Slide } from "@mui/material";
+import {
+  Modal,
+  Slide,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
 
 const SearchInput = () => {
   const [location, setLocation] = useState("Where");
   const [month, setMonth] = useState("");
+  const [option, setOption] = useState("");
   const [isMonthDropdownOpen, setIsMonthDropdownOpen] = useState(false);
   const [isLocationDropdownOpen, setIsLocationDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -24,6 +32,7 @@ const SearchInput = () => {
     "November",
     "December",
   ];
+  const options = ["Packages", "Nile Cruise", "Excursions"];
 
   return (
     <div className="relative">
@@ -60,8 +69,10 @@ const SearchInput = () => {
             </div>
           )}
         </div>
+
         {/* Separator */}
         <div className="w-px bg-gray-300 h-8 hidden md:block"></div>
+
         {/* Month Input with Dropdown */}
         <div className="relative flex-1">
           <input
@@ -109,12 +120,31 @@ const SearchInput = () => {
             </div>
           )}
         </div>
+
+        {/* Dropdown for Options */}
+        <FormControl size="small" margin="dense" className="flex-1">
+          <InputLabel id="option-label">Options</InputLabel>
+          <Select
+            labelId="option-label"
+            value={option}
+            onChange={(e) => setOption(e.target.value)}
+            label="Options"
+          >
+            {options.map((opt) => (
+              <MenuItem key={opt} value={opt}>
+                {opt}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
         {/* Search Button */}
         <button className="bg-[#232323] text-white font-segoe rounded-md px-4 py-2 flex items-center text-center justify-center w-full md:w-auto">
           <Search className="mr-2 w-5 h-5" />
           Search
         </button>
       </div>
+
       <div className="relative md:hidden w-full">
         <input
           type="text"

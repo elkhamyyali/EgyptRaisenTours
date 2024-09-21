@@ -6,6 +6,7 @@ import { Search } from "lucide-react";
 
 import dayjs from "dayjs";
 import DatePickerModal from "@/components/molecules/dataPicker";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 type DateRange = [Date | null, Date | null];
 
@@ -15,8 +16,10 @@ const SearchExcursions: React.FC = () => {
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [openDatePickerModal, setOpenDatePickerModal] =
     useState<boolean>(false);
+  const [option, setOption] = useState<string>("");
 
   const locations: string[] = ["New York", "London", "Paris", "Tokyo"];
+  const options: string[] = ["Packages", "Nile Cruise", "Excursions"];
 
   const handleDateChange = (date: dayjs.Dayjs | null, rangeDays: number) => {
     const endDate = date ? date.add(rangeDays - 1, "day").toDate() : null;
@@ -60,6 +63,23 @@ const SearchExcursions: React.FC = () => {
           className="border border-gray-300 rounded-md px-3 py-2 w-full sm:w-[200px] cursor-pointer"
         />
 
+        {/* Options Select */}
+        <FormControl size="small" className="flex-1 mb-4 sm:mb-0 sm:w-[200px]">
+          <InputLabel id="option-label">Options</InputLabel>
+          <Select
+            labelId="option-label"
+            value={option}
+            onChange={(e) => setOption(e.target.value)}
+            label="Options"
+          >
+            {options.map((opt) => (
+              <MenuItem key={opt} value={opt}>
+                {opt}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
         <button className="hidden sm:block bg-[#232323] text-white font-segoe rounded-md px-4 py-2 flex items-center text-center justify-center">
           Search
         </button>
@@ -74,7 +94,7 @@ const SearchExcursions: React.FC = () => {
         locations={locations}
         dateRange={dateRange}
         setDateRange={setDateRange}
-        setOpenDatePickerModal={setOpenDatePickerModal} // Pass function to open DatePickerModal
+        setOpenDatePickerModal={setOpenDatePickerModal}
       />
 
       {/* Date Picker Modal */}

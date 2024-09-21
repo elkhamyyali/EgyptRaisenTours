@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Calendar, Globe, Heart, MapPin, Users } from "lucide-react";
-
+import defaultImage from "../../../../public/assets/Secondimage.jpeg"; // Import your default image
 import Link from "next/link";
 import { Button } from "@mui/material";
 import { ToursData } from "@/types/tour"; // Import from your types file
@@ -33,13 +33,13 @@ const TravelPackagePage: React.FC<TravelPackagePageProps> = ({ toursData }) => {
             <div className="w-full bg-white rounded-lg overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-xl cursor-pointer">
               <div className="flex flex-col md:flex-row">
                 <div className="w-full md:w-2/6 h-64 md:h-auto relative">
-                  {/* <Image
-                    src={pkg.main_image}
+                  <Image
+                    src={pkg.main_image || defaultImage} // Use default image if main_image is not available
                     alt={pkg.title}
                     width={100}
                     height={100}
-                    className="transition-transform duration-300 hover:scale-105"
-                  /> */}
+                    className="transition-transform duration-300 hover:scale-105 w-full h-full"
+                  />
                   <div className="absolute top-3 left-3 bg-green-500 text-white px-3 py-1 text-sm font-segoe rounded-sm shadow-md">
                     Special Offer 20%
                   </div>
