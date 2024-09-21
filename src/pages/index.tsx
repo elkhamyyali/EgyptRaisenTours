@@ -26,7 +26,9 @@ type Blog = {
 interface HomeProps {
   toursData: ToursData; // Tours data for general tours
   excursionData: TourPackage[]; // Rename for excursion tours data
-  blogData: Blog[];
+  blogData: {
+    data: Blog[]; // blogData will contain a data array
+  };
   Destinations: Destination[];
 }
 
@@ -68,7 +70,7 @@ export async function getServerSideProps() {
     props: {
       toursData: toursData,
       excursionData: excursionData.data as TourPackage[], // Pass the renamed variable
-      blogData: blogData.data,
+      blogData: blogData,
       Destinations: Destinations.data,
     },
   };
