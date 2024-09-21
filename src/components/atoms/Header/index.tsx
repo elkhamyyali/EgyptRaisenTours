@@ -83,8 +83,8 @@ export const Header = ({ header, className }: HeaderProps_TP) => {
                     onClick={() => setIsMenuOpen(false)}
                     className={`block font-segoe font-semibold text-nowrap text-[14px] px-3 py-1 rounded transition-colors duration-300 ${
                       router.pathname === href
-                        ? "text-yellow-950"
-                        : "text-[#945E13] hover:text-[#e6af62]"
+                        ? "text-gray-600"
+                        : "text-black hover:text-gray-300"
                     }`}
                   >
                     {label}
@@ -110,20 +110,19 @@ export const Header = ({ header, className }: HeaderProps_TP) => {
               className="hidden lg:block focus:outline-none"
               title="Search"
             >
-              <AiOutlineSearch size={30} className="text-[#945E13]" />
+              <AiOutlineSearch size={30} className="text-black" />
             </button>
 
             {/* Login Button - hidden on mobile */}
             <Link href="/login" className="hidden lg:flex items-center">
-              <AiOutlineLogin size={30} className="text-[#945E13]" />
-              <span className="ml-2 bg-custom-gradient p-2 rounded-xl px-6 text-white">
+              <span className="ml-2 bg-black p-2 rounded-md px-10 text-white">
                 Login
               </span>
             </Link>
 
             {/* Mobile Menu Button (Visible on Mobile Only) */}
             <button
-              className="lg:hidden text-[#945E13] focus:outline-none"
+              className="lg:hidden text-gray-900 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <AiOutlineMenuFold size={30} />

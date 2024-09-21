@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import { ToursData } from "@/types/tour"; // Import from your types file
 import Pagination from "../Pagination"; // Import the Pagination component
 import Image from "next/image";
-
+import { FaWhatsapp } from "react-icons/fa";
 interface TravelPackagePageProps {
   toursData: ToursData;
 }
@@ -104,13 +104,14 @@ const TravelPackagePage: React.FC<TravelPackagePageProps> = ({ toursData }) => {
                       <p className="text-sm text-gray-600">Per Person</p>
                     </div>
                     <div className="flex sm:flex-row sm:space-y-0 sm:space-x-2">
-                      <Button className="bg-custom-gradient capitalize mr-3 md:mr-0 text-white font-segoe sm:py-2 px-3 sm:px-6 rounded-sm transition duration-300 ease-in-out transform hover:bg-yellow-700 hover:scale-105 w-full sm:w-auto">
+                      <Button className="bg-black capitalize mr-3 md:mr-0 text-white font-segoe sm:py-2 px-3 sm:px-6 rounded-sm transition duration-300 ease-in-out transform hover:bg-gray-700 hover:scale-105 w-full sm:w-auto">
                         View tour
                       </Button>
 
-                      <button className="border md:mx-0 mx-1 px-2 md:px-2 text-nowrap border-custom-gradient text-custom-gradient hover:bg-yellow-50 font-segoe sm:py-2 sm:px-6 rounded-sm transition duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto">
-                        Download brochure
-                      </button>
+                      <Button className="border bg-green-300 md:mx-0 mx-1 px-2 md:px-2 text-nowrap border-green-600 text-green-900 hover:bg-green-50 font-segoe sm:py-2 sm:px-6 rounded-sm transition duration-300 ease-in-out transform hover:scale-105 w-full sm:w-auto">
+                        Whats App{" "}
+                        <FaWhatsapp className="text-green-900 ml-3" size={20} />
+                      </Button>
                     </div>
                   </div>
                 </div>

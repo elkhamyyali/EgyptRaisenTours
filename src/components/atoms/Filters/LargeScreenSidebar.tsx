@@ -54,9 +54,9 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
                 checked={selectedDestination === country}
                 onChange={() => setSelectedDestination(country)}
                 sx={{
-                  color: "#9D6C1E",
+                  color: "black",
                   "&.Mui-checked": {
-                    color: "#9D6C1E",
+                    color: "black",
                   },
                 }}
               />
@@ -76,12 +76,12 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
             min={0}
             max={1000}
             sx={{
-              color: "#9D6C1E",
+              color: "black",
               "& .MuiSlider-thumb": {
-                backgroundColor: "#9D6C1E",
+                backgroundColor: "black",
               },
               "& .MuiSlider-rail": {
-                backgroundColor: "#9D6C1E",
+                backgroundColor: "black",
               },
             }}
           />
@@ -102,9 +102,9 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
                   checked={selectedStarRating === rating}
                   onChange={() => setSelectedStarRating(rating)}
                   sx={{
-                    color: "#9D6C1E",
+                    color: "black",
                     "&.Mui-checked": {
-                      color: "#9D6C1E",
+                      color: "black",
                     },
                   }}
                 />
@@ -136,9 +136,9 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
                   );
                 }}
                 sx={{
-                  color: "#9D6C1E",
+                  color: "black",
                   "&.Mui-checked": {
-                    color: "#9D6C1E",
+                    color: "black",
                   },
                 }}
               />
@@ -158,9 +158,9 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
                   checked={selectedAccommodationType === type}
                   onChange={() => setSelectedAccommodationType(type)}
                   sx={{
-                    color: "#9D6C1E",
+                    color: "black",
                     "&.Mui-checked": {
-                      color: "#9D6C1E",
+                      color: "black",
                     },
                   }}
                 />
@@ -174,7 +174,7 @@ const LargeScreenSidebar: React.FC<LargeScreenSidebarProps> = ({
       {/* Apply Filters Button */}
       <div className="mt-4">
         <Button
-          className="bg-custom-gradient text-white w-full"
+          className="bg-black hover:bg-gray-900 text-white w-full"
           onClick={handleApplyFilters}
         >
           Apply Filters

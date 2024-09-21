@@ -19,36 +19,56 @@ const sliderSettings = {
 };
 
 // Define static fallback data
-const staticBlogData = [
-  {
-    id: 1,
-    title: "How to Travel on a Budget",
-    content: "Tips and tricks to save money while exploring the world.",
-    created_at: "2023-09-10",
-    image: BlogImage,
-  },
-  {
-    id: 2,
-    title: "Top Destinations for 2024",
-    content: "Discover the hottest travel spots for the upcoming year.",
-    created_at: "2023-09-12",
-    image: BlogImage,
-  },
-  {
-    id: 3,
-    title: "Packing Essentials for Every Traveler",
-    content: "Don't forget these must-have items on your next trip.",
-    created_at: "2023-09-15",
-    image: BlogImage,
-  },
-];
+const staticBlogData = {
+  data: [
+    {
+      id: 1,
+      title: "How to Travel on a Budget",
+      content: "Tips and tricks to save money while exploring the world.",
+      created_at: "2023-09-10",
+      image: BlogImage,
+    },
+    {
+      id: 2,
+      title: "Top Destinations for 2024",
+      content: "Discover the hottest travel spots for the upcoming year.",
+      created_at: "2023-09-12",
+      image: BlogImage,
+    },
+    {
+      id: 3,
+      title: "Packing Essentials for Every Traveler",
+      content: "Don't forget these must-have items on your next trip.",
+      created_at: "2023-09-15",
+      image: BlogImage,
+    },
+  ],
+};
 
-const Blog: React.FC = () => {
+type BlogData = {
+  id: number;
+  title: string;
+  content: string;
+  created_at: string;
+  image: string | StaticImageData;
+};
+
+type Props = {
+  blogData?: BlogData[] | { data?: BlogData[] };
+};
+
+const Blog: React.FC<Props> = ({ blogData }) => {
+  // Ensure that blogData is always an array, either directly or within `data`.
+  const dataToShow = Array.isArray(blogData)
+    ? blogData
+    : blogData?.data?.length
+    ? blogData.data
+    : staticBlogData.data;
+
   return (
     <div className="p-0">
-      {/* Desktop Grid */}
       <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6 justify-center mx-auto max-w-screen-xl">
-        {staticBlogData.map((blog) => (
+        {dataToShow.map((blog) => (
           <Card
             key={blog.id}
             imageSrc={blog.image}
@@ -60,10 +80,9 @@ const Blog: React.FC = () => {
         ))}
       </div>
 
-      {/* Mobile Carousel */}
       <div className="block md:hidden">
         <Slider {...sliderSettings}>
-          {staticBlogData.map((blog) => (
+          {dataToShow.map((blog) => (
             <div key={blog.id} className="px-0">
               <Card
                 imageSrc={blog.image}

@@ -1,6 +1,5 @@
 import React from "react";
 import Blog from "../molecules/Blogs/Blog";
-import Loader from "../molecules/Loader";
 
 type BlogData = {
   id: number;
@@ -11,9 +10,7 @@ type BlogData = {
 };
 
 type Props = {
-  blogData: {
-    data: BlogData[];
-  };
+  blogData: { data: BlogData[] }; // Adjusted structure to match data coming from server
 };
 
 const BlogSection: React.FC<Props> = ({ blogData }) => {
@@ -23,7 +20,8 @@ const BlogSection: React.FC<Props> = ({ blogData }) => {
         Blogs
       </div>
       <div>
-        <Blog blogData={blogData} />
+        {/* Pass the array of blog data to the Blog component */}
+        <Blog blogData={blogData.data} />
       </div>
     </div>
   );

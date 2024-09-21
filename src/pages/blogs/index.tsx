@@ -13,18 +13,18 @@ type Blog = {
   image: string;
 };
 
-type Destination = {
+export type Destination = {
   id: number;
   name: string;
   panar_image: string;
-  image?: string; // Add optional property if it's sometimes missing
+  image?: string; // Optional property if it's sometimes missing
 };
 
 type Props = {
   blogData: {
-    data: Blog[];
+    data: Blog[]; // blogData will contain a data array
   };
-  Destinations: Destination[]; // Make sure Destinations is an array of Destination
+  Destinations: Destination[];
 };
 
 const BLogs: React.FC<Props> = ({ blogData, Destinations }) => {
@@ -39,13 +39,13 @@ const BLogs: React.FC<Props> = ({ blogData, Destinations }) => {
 };
 
 export async function getServerSideProps() {
-  const blogData = await fetchData("blogs");
-  const Destinations = await fetchData("countries");
+  const blogData = await fetchData("blogs"); // Fetch blogs data
+  const Destinations = await fetchData("countries"); // Fetch destinations data
 
   return {
     props: {
-      blogData: blogData,
-      Destinations: Destinations.data,
+      blogData: blogData, // blogData should already be in the correct format
+      Destinations: Destinations.data, // Ensure Destinations is an array of data
     },
   };
 }

@@ -13,6 +13,7 @@ import BlogSection from "@/components/organisms/BlogSection";
 import CallToActionSection from "@/components/organisms/CTAsection";
 import fetchData from "@/helper/FetchData";
 import { TourPackage, ToursData } from "@/types/tour";
+import { Destination } from "./blogs";
 
 type Blog = {
   id: number;
@@ -26,12 +27,14 @@ interface HomeProps {
   toursData: ToursData; // Tours data for general tours
   excursionData: TourPackage[]; // Rename for excursion tours data
   blogData: Blog[];
+  Destinations: Destination[];
 }
 
 export default function Home({
   toursData,
   excursionData,
   blogData,
+  Destinations,
 }: HomeProps) {
   console.log("🚀 ~ Home ~ toursData:", toursData);
   console.log("🚀 ~ Home ~ excursionData:", excursionData);
@@ -44,7 +47,7 @@ export default function Home({
       <WhyUsSection />
       <ToursSection toursData={toursData} />
       <ExcursionsSection toursData={excursionData} /> {/* Use excursionData */}
-      {/* <DestinationSection /> */}
+      <DestinationSection Destinations={Destinations} />
       <AttractionsSection />
       <AdventuresSection />
       <CallToActionSection />
@@ -58,7 +61,7 @@ export default function Home({
 export async function getServerSideProps() {
   const toursData: ToursData = await fetchData("tours");
   const excursionData = await fetchData("tours?type=excursion"); // Rename this variable
-
+  const Destinations = await fetchData("countries");
   const blogData = await fetchData("blogs");
 
   return {
@@ -66,6 +69,7 @@ export async function getServerSideProps() {
       toursData: toursData,
       excursionData: excursionData.data as TourPackage[], // Pass the renamed variable
       blogData: blogData.data,
+      Destinations: Destinations.data,
     },
   };
 }

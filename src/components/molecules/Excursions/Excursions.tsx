@@ -94,7 +94,7 @@ export default function Excursions({ toursData }: ExcursionsProps) {
           <div key={excursion.id} className="px-[5px] md:px-[9px] mb-3">
             <Link href="/top-excursions">
               <div className="px-[4px] mb-3">
-                <div className="flex flex-col max-w-lg mx-auto cursor-pointer border hover:border-yellow-500 border-gray-200 rounded-lg overflow-hidden shadow-lg bg-white h-[500px] transition-all duration-300 ease-in-out">
+                <div className="flex flex-col max-w-lg mx-auto cursor-pointer border hover:border-black border-gray-200 rounded-lg overflow-hidden shadow-lg bg-white h-[500px] transition-all duration-300 ease-in-out">
                   <div className="relative h-72 overflow-hidden">
                     <Image
                       className="w-full h-full object-cover transition-transform duration-300 ease-in-out transform hover:scale-105"
@@ -103,7 +103,7 @@ export default function Excursions({ toursData }: ExcursionsProps) {
                       width={100}
                       height={100}
                     />
-                    <div className="absolute top-2 left-2 bg-[#FFF1BA] text-[#232323] text-xs font-segoe font-medium px-2 py-1 rounded">
+                    <div className="absolute top-2 left-2 bg-black text-white text-xs font-segoe font-medium px-2 py-1 rounded">
                       Top Rated
                     </div>
                     <Button className="absolute top-2 right-2 text-white hover:text-red-500">
@@ -145,7 +145,7 @@ export default function Excursions({ toursData }: ExcursionsProps) {
                       </span>
                     </div>
                     <div className="mt-1">
-                      <span className="font-segoe text-xl text-yellow-700">
+                      <span className="font-segoe text-xl text-black">
                         From $
                         {excursion.tour_prices[0]?.prices[0]?.price || "N/A"}
                       </span>
